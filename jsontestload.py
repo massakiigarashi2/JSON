@@ -18,9 +18,9 @@ https://acervolima.com/como-ler-uma-resposta-json-de-um-link-em-python/
 
 # import urllib library
 from urllib.request import urlopen
-  
-# import json
+
 import json
+import pandas
 # store the URL in url as 
 # parameter for urlopen
 url = "https://transparencia.campinas.sp.gov.br/index.php?action=ws&mode=getDespesasTotal"
@@ -34,4 +34,7 @@ data_json = json.loads(response.read())
   
 # print the json response
 print(data_json)
-
+df = pandas.DataFrame(data_json)
+df
+print(df['grupo'])
+print("Valor índice 12 é: " + str(df['grupo'][12]))
